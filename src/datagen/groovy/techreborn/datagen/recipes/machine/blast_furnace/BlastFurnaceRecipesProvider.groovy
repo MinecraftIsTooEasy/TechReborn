@@ -290,9 +290,9 @@ class BlastFurnaceRecipesProvider extends TechRebornRecipesProvider {
 
 	void generateAnvil() {
 		[
-			(Items.ANVIL) : 12,
-			(Items.CHIPPED_ANVIL) : 9,
-			(Items.DAMAGED_ANVIL) : 6,
+			(Items.IRON_ANVIL) : 12,
+			(Items.CHIPPED_IRON_ANVIL) : 9,
+			(Items.DAMAGED_IRON_ANVIL) : 6,
 		].each {(anvil,amount) ->
 			offerBlastFurnaceRecipe {
 				ingredients anvil, new ItemStack(Items.SAND, 2)

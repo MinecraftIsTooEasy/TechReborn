@@ -27,8 +27,10 @@ package techreborn.init;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Material;
+import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import reborncore.common.fluid.*;
@@ -91,13 +93,24 @@ public enum ModFluids {
 		fluidSettings.setStillTexture(texture_still);
 		fluidSettings.setFlowingTexture(texture_flowing);
 
+		//MITE CHANGE
 		stillFluid = new RebornFluid(true, fluidSettings, () -> block, () -> bucket, () -> flowingFluid, () -> stillFluid) {
+
+			@Override
+			public Item getBucketItem(BucketItem.BucketProperties bucketProperties) {
+				return bucket;
+			}
 		};
 		flowingFluid = new RebornFluid(false, fluidSettings, () -> block, () -> bucket, () -> flowingFluid, () -> stillFluid) {
+			@Override
+			public Item getBucketItem(BucketItem.BucketProperties bucketProperties) {
+				return bucket;
+			}
 		};
 
 		block = new RebornFluidBlock(stillFluid, FabricBlockSettings.of(Material.WATER).noCollision().hardness(100.0F).dropsNothing());
-		bucket = new RebornBucketItem(stillFluid, new Item.Settings().group(TechReborn.ITEMGROUP).recipeRemainder(Items.BUCKET).maxCount(1));
+		bucket = new RebornBucketItem(stillFluid, BucketItem.BucketProperties.fromMaterial(ToolMaterials.IRON), new Item.Settings().group(TechReborn.ITEMGROUP).recipeRemainder(Items.IRON_BUCKET).maxCount(1));
+		//END
 	}
 
 	public void register() {

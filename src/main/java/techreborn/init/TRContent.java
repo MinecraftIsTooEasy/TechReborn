@@ -457,7 +457,9 @@ public class TRContent {
 					.sounds(name.startsWith("deepslate") ? BlockSoundGroup.DEEPSLATE : BlockSoundGroup.STONE)
 					.hardness(name.startsWith("deepslate") ? 4.5f : 3f)
 					.resistance(3f),
-					distribution != null ? distribution.experienceDropped : experienceDroppedFallback
+					//MITE CHANGE
+					distribution != null ? distribution.experienceDropped.getMax() : experienceDroppedFallback.getMax()
+					//END
 			);
 			this.industrial = industrial;
 			InitUtils.setup(block, name + "_ore");

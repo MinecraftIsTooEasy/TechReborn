@@ -25,10 +25,21 @@
 package reborncore.common.fluid;
 
 import net.minecraft.item.BucketItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ToolMaterials;
+import net.minecraft.util.Lazy;
 
 public class RebornBucketItem extends BucketItem {
 
-	public RebornBucketItem(RebornFluid fluid, Settings settings) {
-		super(fluid, settings);
+	//MIIE CHANGE
+	public RebornBucketItem(RebornFluid fluid, BucketProperties properties, Settings settings) {
+		super(fluid, properties, settings);
 	}
+
+//	@Override
+//	public BucketProperties getProperties(){
+//		return BucketProperties.fromMaterial(ToolMaterials.IRON);
+//	}
+	//END
+
 }

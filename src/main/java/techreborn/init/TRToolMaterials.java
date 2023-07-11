@@ -36,26 +36,41 @@ import static net.minecraft.item.ToolMaterials.*;
 public class TRToolMaterials {
 	public static final ToolMaterial BASIC_CHAINSAW = copy(IRON, "basic_chainsaw");
 	public static final ToolMaterial BASIC_DRILL = copy(IRON, "basic_drill");
-	public static final ToolMaterial BASIC_JACKHAMMER = copy(DIAMOND, "basic_jackhammer");
+	//MITE CHANGE
+	public static final ToolMaterial BASIC_JACKHAMMER = copy(MITHRIL, "basic_jackhammer");
 
-	public static final ToolMaterial ADVANCED_CHAINSAW = copy(DIAMOND, "advanced_chainsaw");
-	public static final ToolMaterial ADVANCED_DRILL = copy(DIAMOND, "advanced_drill");
-	public static final ToolMaterial ADVANCED_JACKHAMMER = copy(DIAMOND, "advanced_jackhammer");
+	public static final ToolMaterial ADVANCED_CHAINSAW = copy(MITHRIL, "advanced_chainsaw");
+	public static final ToolMaterial ADVANCED_DRILL = copy(MITHRIL, "advanced_drill");
+	public static final ToolMaterial ADVANCED_JACKHAMMER = copy(MITHRIL, "advanced_jackhammer");
 
-	public static final ToolMaterial INDUSTRIAL_CHAINSAW = copy(DIAMOND, "industrial_chainsaw");
-	public static final ToolMaterial INDUSTRIAL_DRILL = copy(DIAMOND, "industrial_drill");
-	public static final ToolMaterial INDUSTRIAL_JACKHAMMER = copy(DIAMOND, "industrial_jackhammer");
+	public static final ToolMaterial INDUSTRIAL_CHAINSAW = copy(MITHRIL, "industrial_chainsaw");
+	public static final ToolMaterial INDUSTRIAL_DRILL = copy(MITHRIL, "industrial_drill");
+	public static final ToolMaterial INDUSTRIAL_JACKHAMMER = copy(MITHRIL, "industrial_jackhammer");
 
-	public static final ToolMaterial ROCK_CUTTER = copy(DIAMOND, "rock_cutter");
-	public static final ToolMaterial NANOSABER = copy(DIAMOND, "nanosaber");
-	public static final ToolMaterial OMNI_TOOL = copy(DIAMOND, "omni_tool");
+	public static final ToolMaterial ROCK_CUTTER = copy(MITHRIL, "rock_cutter");
+	public static final ToolMaterial NANOSABER = copy(MITHRIL, "nanosaber");
+	public static final ToolMaterial OMNI_TOOL = copy(MITHRIL, "omni_tool");
+	//END
 
 	public static ToolMaterial copy(ToolMaterial material, String id) {
 		return new ToolMaterial() {
+//			@Override
+//			public int getDurability() {
+//				return material.getDurability();
+//			}
+
+			//MITE CHANGE
 			@Override
-			public int getDurability() {
-				return material.getDurability();
+			public int getRepairDurability() {
+				return 12800;
 			}
+
+			@Override
+			public int getAcidResistance() {
+				return 40;
+			}
+
+			//END
 
 			@Override
 			public float getMiningSpeedMultiplier() {

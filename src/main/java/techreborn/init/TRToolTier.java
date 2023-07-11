@@ -77,10 +77,24 @@ public enum TRToolTier implements ToolMaterial {
 		this.repairMaterial = new Lazy<>(repairMaterialIn);
 	}
 
+
+	//MITE CHANGE
+//	@Override
+//	public int getDurability() {
+//		return itemDurability;
+//	}
+
 	@Override
-	public int getDurability() {
-		return itemDurability;
+	public int getRepairDurability() {
+		return 0;
 	}
+
+	@Override
+	public int getAcidResistance() {
+		return 0;
+	}
+
+	//END
 
 	@Override
 	public float getMiningSpeedMultiplier() {

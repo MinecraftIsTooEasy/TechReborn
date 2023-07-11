@@ -26,6 +26,8 @@ package techreborn.init;
 
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -69,6 +71,10 @@ public enum TRArmorMaterials implements ArmorMaterial {
 	private final float knockbackResistance;
 	private final Lazy<Ingredient> repairMaterial;
 
+	//MITE ADD
+	private final int repairDurability;
+	//END
+
 	TRArmorMaterials(int maxDamageFactor, int[] damageReductionAmountArray, int enchantability,
 					 SoundEvent soundEvent, float toughness, float knockbackResistance, Supplier<Ingredient> repairMaterialIn) {
 		this.maxDamageFactor = maxDamageFactor;
@@ -78,6 +84,10 @@ public enum TRArmorMaterials implements ArmorMaterial {
 		this.toughness = toughness;
 		this.knockbackResistance = knockbackResistance;
 		this.repairMaterial = new Lazy<>(repairMaterialIn);
+
+		//MITE ADD
+		this.repairDurability = this.damageReductionAmountArray[1] / 16;
+		//END
 	}
 
 	TRArmorMaterials(int maxDamageFactor, int[] damageReductionAmountArray, int enchantability,
@@ -85,14 +95,27 @@ public enum TRArmorMaterials implements ArmorMaterial {
 		this(maxDamageFactor, damageReductionAmountArray, enchantability, soundEvent, toughness, 0.0F, repairMaterialIn);
 	}
 
+	//MITE CHANGE
 	@Override
-	public int getDurability(EquipmentSlot slotIn) {
-		return MAX_DAMAGE_ARRAY[slotIn.getEntitySlotId()] * maxDamageFactor;
+	public float getProtectionAmount(EquipmentSlot slotIn) {
+		return damageReductionAmountArray[slotIn.getEntitySlotId()];
 	}
 
 	@Override
-	public int getProtectionAmount(EquipmentSlot slotIn) {
-		return damageReductionAmountArray[slotIn.getEntitySlotId()];
+	public int getRepairDurability() {
+		return repairDurability;
+	}
+
+	@Override
+	public int getRepairLevel() {
+		return ToolMaterials.MITHRIL.getRepairLevel();
+	}
+	//END
+
+
+	@Override
+	public int getDurability(EquipmentSlot slotIn) {
+		return MAX_DAMAGE_ARRAY[slotIn.getEntitySlotId()] * maxDamageFactor;
 	}
 
 	@Override
