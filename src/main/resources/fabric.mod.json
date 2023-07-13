@@ -7,9 +7,9 @@
   "description": "A completely standalone tech mod including tools and machines to gather resources, process materials, and progress through the mod.",
   "license": "MIT",
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/techreborn",
-    "sources": "https://github.com/TechReborn/TechReborn",
-    "issues": "https://github.com/TechReborn/TechReborn/issues"
+    "homepage": "https://github.com/MinecraftIsTooEasy/TechReborn",
+    "sources": "https://github.com/MinecraftIsTooEasy/TechReborn",
+    "issues": "https://github.com/MinecraftIsTooEasy/TechReborn/issues"
   },
   "environment": "*",
   "entrypoints": {
@@ -35,13 +35,14 @@
     "reborncore": "*",
 	"team_reborn_energy": ">=2.2.0",
 	"fabric-biome-api-v1": ">=3.0.0",
-  	"minecraft": "~1.18.2-beta.1"
+  	"minecraft": "~1.18.2"
   },
   "accessWidener": "techreborn.accesswidener",
   "authors": [
     "Team Reborn",
     "modmuss50",
-    "drcrazy"
+    "drcrazy",
+	"Huix"
   ],
   "contributors": [
     "Gigabit101",
